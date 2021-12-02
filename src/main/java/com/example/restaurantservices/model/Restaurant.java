@@ -7,17 +7,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document
+@Document(collection = "Restaurant")
 public class Restaurant {
 
     @Transient
-	public static final String SEQUENCE_NAME = "book_sequence";
+	public static final String SEQUENCE_NAME = "restaurant_sequence";
 
     @Id
     private long id;
     private String name;
-    // private String location;
-    // private String cuisine;
-    // private int tier;
-    // private double rating;
+    private Location location;
+    private String cuisine;
+    private Tier tier;
+    private double rating;
 }

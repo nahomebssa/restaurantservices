@@ -42,6 +42,16 @@ public class RestaurantServiceController {
 		repository.save(restaurant);
         return restaurant;
     }
+    @PostMapping("/restaurants/add-all")
+    public List<Restaurant> addRestaurantAll(@RequestBody List<Restaurant> restaurants) {
+        for (Restaurant restaurant : restaurants) {
+            //generate sequence 
+            int id = getSequenceNumber(Restaurant.SEQUENCE_NAME);
+            restaurant.setId(id);
+            repository.save(restaurant);
+        }
+        return restaurants;
+    }
     //#endregion
 
     @GetMapping("/restaurants")
